@@ -33,7 +33,7 @@ const fi = (function() {
      filter: function (collection, callback) {
        return collection.filter(element => callback(element));
      },
-     
+
      size: function (collection) {
        if (collection.length) {
          return collection.length;
