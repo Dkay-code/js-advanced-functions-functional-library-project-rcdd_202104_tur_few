@@ -31,7 +31,7 @@ const fi = (function() {
        return total;
      },
 
-     
+
      find: function (collection, callback) {
        for (const element of collection) {
          if (callback(element)) {
@@ -108,7 +108,7 @@ const fi = (function() {
        }
      },
 
-  
+
      uniq: function (array, isSorted, callback = a => a) {
        if (isSorted) {
          const newArr = [array[0]];
