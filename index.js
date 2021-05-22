@@ -40,9 +40,8 @@ const fi = (function() {
        } else {
          return Object.values(collection).length;
        }
-      //  const newCollection = Array.isArray(collection) ? collection : Object.values(collection);
-      //  return newCollection.length;
      },
+     
      first: function (array, n = 1) {
        const newArr = array.slice(0, n);
        return newArr.length == 1 ? newArr[0] : newArr;
