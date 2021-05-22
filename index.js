@@ -14,22 +14,14 @@ const fi = (function() {
 
      map: function (collection, callback) {
        const newCollection = Array.isArray(collection) ? collection : Object.values(collection);
-      //  const returnCollection = [];
-      //  for (const element of newCollection) {
-      //    returnCollection.push(callback(element));
-      //  }
-      //  return returnCollection;
        return newCollection.map(element => (callback(element)));
      },
 
      reduce: function (collection, callback, acc) {
-       let total = !!acc ? acc : collection[0];
-       let i = !!acc ? 0 : 1;
-
-       for (; i < collection.length; i++) {
-         total = callback(total, collection[i], collection);
-       }
-       return total;
+       let reduceArray = [];
+        if(acc) reduceArr = collection.reduce(callback, acc);
+        else reduceArr = collection.reduce(callback);
+        return reduceArr;
      },
 
 
