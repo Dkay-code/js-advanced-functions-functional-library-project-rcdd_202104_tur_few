@@ -14,11 +14,12 @@ const fi = (function() {
 
      map: function (collection, callback) {
        const newCollection = Array.isArray(collection) ? collection : Object.values(collection);
-       const returnCollection = [];
-       for (const element of newCollection) {
-         returnCollection.push(callback(element));
-       }
-       return returnCollection;
+      //  const returnCollection = [];
+      //  for (const element of newCollection) {
+      //    returnCollection.push(callback(element));
+      //  }
+      //  return returnCollection;
+       newCollection.map(element => (callback(element))
      },
 
      reduce: function (collection, callback, acc) {
