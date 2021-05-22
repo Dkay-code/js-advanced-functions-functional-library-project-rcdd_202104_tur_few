@@ -61,7 +61,7 @@ const fi = (function() {
        }
        return newArr;
      },
-     
+
      sortBy: function (array, callback) {
        const newArr = [...array];
        return newArr.sort(function (a, b) {
