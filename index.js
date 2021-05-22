@@ -35,8 +35,13 @@ const fi = (function() {
      },
      
      size: function (collection) {
-       const newCollection = Array.isArray(collection) ? collection : Object.values(collection);
-       return newCollection.length;
+       if (collection.length) {
+         return collection.length;
+       } else {
+         return Object.values(collection).length;
+       }
+      //  const newCollection = Array.isArray(collection) ? collection : Object.values(collection);
+      //  return newCollection.length;
      },
      first: function (array, n = 1) {
        const newArr = array.slice(0, n);
