@@ -23,7 +23,7 @@ const fi = (function() {
       //   else reduceArr = collection.reduce(callback);
       //   return reduceArr;
 
-        return collection.reduce(callback, acc, 0);
+        return collection.reduce(callback, acc = 0);
      },
 
 
