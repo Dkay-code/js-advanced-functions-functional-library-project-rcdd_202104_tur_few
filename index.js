@@ -31,15 +31,14 @@ const fi = (function() {
        return total;
      },
 
-     map: function() {
+     
      find: function (collection, callback) {
        for (const element of collection) {
          if (callback(element)) {
            return element;
          }
        }
-     }
-   },
+     },
      filter: function (collection, callback) {
        const filterd = [];
        for (const element of collection) {
@@ -85,7 +84,7 @@ const fi = (function() {
        return keys;
      },
 
-     reduce: function() {
+
      values: function (obj) {
        const values = [];
        for (const key in obj) {
@@ -109,7 +108,7 @@ const fi = (function() {
        }
      },
 
-     functions: function() {
+  
      uniq: function (array, isSorted, callback = a => a) {
        if (isSorted) {
          const newArr = [array[0]];
@@ -146,8 +145,6 @@ const fi = (function() {
          }
        }
 
-   }
- })()
        return methods.sort();
      },
    };
