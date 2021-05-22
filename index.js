@@ -53,15 +53,13 @@ const fi = (function() {
      },
 
      compact: function (array) {
-       if (element){
-        return array.map(element);}
-      //  const newArr = [];
-      //  for (const element of array) {
-      //    if (element) {
-      //      newArr.push(element);
-      //    }
-      //  }
-      //  return newArr;
+       const newArr = [];
+       for (const element of array) {
+         if (element) {
+           newArr.push(element);
+         }
+       }
+       return newArr;
      },
      sortBy: function (array, callback) {
        const newArr = [...array];
