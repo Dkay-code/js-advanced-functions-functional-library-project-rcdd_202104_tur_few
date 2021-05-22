@@ -19,7 +19,7 @@ const fi = (function() {
       //    returnCollection.push(callback(element));
       //  }
       //  return returnCollection;
-       return newCollection.map(element => (callback(element));
+       return newCollection.map(element => (callback(element)));
      },
 
      reduce: function (collection, callback, acc) {
