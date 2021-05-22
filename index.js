@@ -32,14 +32,8 @@ const fi = (function() {
 
      filter: function (collection, callback) {
        return collection.filter(element => callback(element));
-      //  const filterd = [];
-      //  for (const element of collection) {
-      //    if (callback(element)) {
-      //      filterd.push(element);
-      //    }
-      //  }
-      //  return filterd;
      },
+     
      size: function (collection) {
        const newCollection = Array.isArray(collection) ? collection : Object.values(collection);
        return newCollection.length;
