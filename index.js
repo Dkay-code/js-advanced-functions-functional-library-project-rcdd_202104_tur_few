@@ -29,7 +29,7 @@ const fi = (function() {
        return collection.find(element => callback(element));
      },
 
-     
+
      filter: function (collection, callback) {
        return collection.filter(element => callback(element));
       //  const filterd = [];
