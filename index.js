@@ -59,8 +59,8 @@ const fi = (function() {
       //    if (element) {
       //      newArr.push(element);
       //    }
-       }
-       return newArr;
+      //  }
+      //  return newArr;
      },
      sortBy: function (array, callback) {
        const newArr = [...array];
