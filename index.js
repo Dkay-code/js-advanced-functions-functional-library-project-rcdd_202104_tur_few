@@ -29,6 +29,7 @@ const fi = (function() {
        for (const element of collection) {
          if (callback(element)) {
            return element;
+           collection.find(element => callback(element));
          }
        }
      },
