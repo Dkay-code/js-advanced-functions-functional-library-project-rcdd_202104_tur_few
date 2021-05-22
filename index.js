@@ -26,12 +26,12 @@ const fi = (function() {
 
 
      find: function (collection, callback) {
-       for (const element of collection) {
-         if (callback(element)) {
-           return element;
+      //  for (const element of collection) {
+      //    if (callback(element)) {
+      //      return element;
            collection.find(element => callback(element));
-         }
-       }
+      //    }
+      //  }
      },
      filter: function (collection, callback) {
        const filterd = [];
