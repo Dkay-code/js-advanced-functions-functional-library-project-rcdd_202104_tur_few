@@ -53,8 +53,8 @@ const fi = (function() {
      },
 
      compact: function (array) {
-
-        return array.map(element);
+       if (element){
+        return array.map(element);}
       //  const newArr = [];
       //  for (const element of array) {
       //    if (element) {
