@@ -31,13 +31,14 @@ const fi = (function() {
 
      
      filter: function (collection, callback) {
-       const filterd = [];
-       for (const element of collection) {
-         if (callback(element)) {
-           filterd.push(element);
-         }
-       }
-       return filterd;
+       return collection.filter(element => callback(element));
+      //  const filterd = [];
+      //  for (const element of collection) {
+      //    if (callback(element)) {
+      //      filterd.push(element);
+      //    }
+      //  }
+      //  return filterd;
      },
      size: function (collection) {
        const newCollection = Array.isArray(collection) ? collection : Object.values(collection);
