@@ -18,10 +18,12 @@ const fi = (function() {
      },
 
      reduce: function (collection, callback, acc) {
-       let reduceArray = [];
-        if(acc) reduceArr = collection.reduce(callback, acc);
-        else reduceArr = collection.reduce(callback);
-        return reduceArr;
+      //  let reduceArray = [];
+      //   if(acc) reduceArr = collection.reduce(callback, acc);
+      //   else reduceArr = collection.reduce(callback);
+      //   return reduceArr;
+
+        collection.reduce(callback, acc, 0);
      },
 
 
