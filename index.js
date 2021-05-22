@@ -4,115 +4,152 @@ const fi = (function() {
       return 'Start by reading https://medium.com/javascript-scene/master-the-javascript-interview-what-is-functional-programming-7f218c68b3a0'
     },
 
-    each: function() {
-      each: function(array, callback) {
-        if(array.length) array.forEach(element => callback(element));
-        else {
-          const objectValues = Object.values(array);
-          objectValues.forEach(element => callback(element));
-        }
-        return array;
-      },
+    each: function (collection, alert) {
+       const newCollection = Array.isArray(collection) ? collection : Object.values(collection);
+       for (const element of newCollection) {
+         alert(element);
+       }
+       return collection;
+     },
 
-      map: function(array, callback) {
-        let mapArr = [];
-        if(array.length) mapArr = array.map(element => callback(element));
-        else mapArr = Object.values(array).map(element => callback(element));
-        return mapArr;
-      },
+     map: function (collection, callback) {
+       const newCollection = Array.isArray(collection) ? collection : Object.values(collection);
+       const returnCollection = [];
+       for (const element of newCollection) {
+         returnCollection.push(callback(element));
+       }
+       return returnCollection;
+     },
 
-      reduce: function(array, callback, acc) {
-        let reduceArr = [];
-        if(acc) reduceArr = array.reduce(callback, acc);
-        else reduceArr = array.reduce(callback);
-        return reduceArr;
-      },
+     reduce: function (collection, callback, acc) {
+       let total = !!acc ? acc : collection[0];
+       let i = !!acc ? 0 : 1;
 
-      find:  function(array, callback) {
-        return array.find(callback);
-      },
+       for (; i < collection.length; i++) {
+         total = callback(total, collection[i], collection);
+       }
+       return total;
+     },
 
-      filter: function(array, callback) {
-        return array.filter(callback);
-      },
+     map: function() {
+     find: function (collection, callback) {
+       for (const element of collection) {
+         if (callback(element)) {
+           return element;
+         }
+       }
+     },
+     filter: function (collection, callback) {
+       const filterd = [];
+       for (const element of collection) {
+         if (callback(element)) {
+           filterd.push(element);
+         }
+       }
+       return filterd;
+     },
+     size: function (collection) {
+       const newCollection = Array.isArray(collection) ? collection : Object.values(collection);
+       return newCollection.length;
+     },
+     first: function (array, n = 1) {
+       const newArr = array.slice(0, n);
+       return newArr.length == 1 ? newArr[0] : newArr;
+     },
 
-      size: function(array) {
-        if (array.length) return array.length;
-        else return Object.keys(array).length;
-      },
+     last: function (array, n = 1) {
+       const newArr = array.slice(-n, array.length);
+       return newArr.length == 1 ? newArr[0] : newArr;
+     },
+     compact: function (array) {
+       const newArr = [];
+       for (const element of array) {
+         if (element) {
+           newArr.push(element);
+         }
+       }
+       return newArr;
+     },
+     sortBy: function (array, callback) {
+       const newArr = [...array];
+       return newArr.sort(function (a, b) {
+         return callback(a) - callback(b);
+       });
+     },
+     keys: function (obj) {
+       const keys = [];
+       for (const key in obj) {
+         keys.push(key);
+       }
+       return keys;
+     },
 
-      first: function(array, num) {
-        if (!num) return array[0];
-        let firstArr = [];
-        for(let i = 0; i < num; i++) firstArr.push(array[i]);
-        return firstArr;
-      },
+     reduce: function() {
+     values: function (obj) {
+       const values = [];
+       for (const key in obj) {
+         values.push(obj[key]);
+       }
+       return values;
+     },
 
-      map: function() {
-      last: function(array, num) {
-        if (!num) return array[array.length - 1];
-        let lastArr = [];
-        for(let i = 1; i <= num; i++) lastArr.unshift(array[array.length - i]);
-        return lastArr;
-      },
+     flatten: function (array, shallow, newArr = []) {
+       if (shallow) {
+         return newArr.concat.apply([], array);
+       } else {
+         for (const element of array) {
+           if (Array.isArray(element)) {
+             fi.flatten(element, false, newArr);
+           } else {
+             newArr.push(element);
+           }
+         }
+         return newArr;
+       }
+     },
 
-      compact:  function(array) {
-        let collection = [];
-        array.forEach(element => {
-          if (element) collection.push(element);
-        });
-        return collection;
-      },
+     functions: function() {
+     uniq: function (array, isSorted, callback = a => a) {
+       if (isSorted) {
+         const newArr = [array[0]];
+         for (let i = 1; i < array.length; i++) {
+           if (callback(array[i - 1]) !== callback(array[i])) {
+             newArr.push(array[i]);
+           }
+         }
+         return newArr;
+       } else {
+         const uniqueArray = [];
+         for (const element of array) {
+           let found = false;
+           for (const uniqElement of uniqueArray) {
+             if (callback(uniqElement) === callback(element)) {
+               found = true;
+             }
+           }
+           if (!found) {
+             uniqueArray.push(element);
+           }
+         }
 
-      reduce: function() {
-      sortBy:  function(array, callback) {
-        let sortedArr = [...array];
-        sortedArr.sort((a, b) => callback(a) - callback(b));
-        return sortedArr;
-      },
+         return uniqueArray;
+       }
+     },
 
-      flatten:  function(array, shallow) {
-        if (shallow === true) return array.flat(1);
-        else return array.flat(Infinity);
-      },
+     functions: function (object) {
+       let methods = [];
 
-      functions: function() {
-      // vvvvvv     The trouble maker :(      vvvvvv
-      uniq: function(array, isSorted, callback) {
-        if (callback) {
-          let uniqArr = [];                                   // Has [1, 2, 3]
-          let comparingArr = array.map(callback);             // Has [1, 2, 2, 0, 1, 0, 0]
-          let toKeep = [];
-          comparingArr.map((value, index) => {
-            if (!toKeep.includes(value)) {
-              toKeep.push(value);
-              uniqArr.push(array[index]);
-            }
-          });
-          return uniqArr;
-        }
-        else return Array.from(new Set(array));
-      },
-      // ^^^^^^     The most complicated one :(   ^^^^^^
+       for (const key in object) {
+         if (typeof object[key] === "function") {
+           methods.push(key);
+         }
+       }
 
-      keys:  function(object) {
-        return Object.keys(object);
-      },
+   }
+ })()
+       return methods.sort();
+     },
+   };
+ })();
 
-      values: function(object) {
-        return Object.values(object);
-      },
-
-      functions: function(object) {
-        let objectFunctions = [];
-        for(let key in object) {
-          if(typeof(object[key]) === 'function') objectFunctions.push(key);
-        }
-        objectFunctions.sort();
-        return objectFunctions;
-      },
-    }
-  
-})()
-
-fi.libraryMethod()
+ fi.libraryMethod()
