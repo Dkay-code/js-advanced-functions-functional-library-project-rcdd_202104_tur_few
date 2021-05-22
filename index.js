@@ -68,7 +68,7 @@ const fi = (function() {
          return callback(a) - callback(b);
        });
      },
-     
+
 
      flatten: function (array, shallow, newArr = []) {
        if (shallow) {
@@ -111,6 +111,23 @@ const fi = (function() {
 
          return uniqueArray;
        }
+     },
+
+     keys: function (obj) {
+       const keys = [];
+       for (const key in obj) {
+         keys.push(key);
+       }
+       return keys;
+     },
+
+
+     values: function (obj) {
+       const values = [];
+       for (const key in obj) {
+         values.push(obj[key]);
+       }
+       return values;
      },
 
      functions: function (object) {
