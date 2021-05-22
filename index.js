@@ -5,7 +5,11 @@ const fi = (function() {
     },
 
     each: function(collection, alert) {
-      const newCollection = Array.isArray(collection) ? collection : Object.values(collection);
+      const newCollection = if (Array.isArray(collection)){
+        return collection;
+      } else {
+        return Object.values(collection);
+      };
       for (const element of newCollection) {
         alert(element);
        }
