@@ -17,13 +17,13 @@ const fi = (function() {
        return newCollection.map(element => (callback(element)));
      },
 
-     reduce: function (collection, callback, acc) {
+     reduce: function (collection, callback, acc=0) {
       //  let reduceArray = [];
       //   if(acc) reduceArr = collection.reduce(callback, acc);
       //   else reduceArr = collection.reduce(callback);
       //   return reduceArr;
 
-        collection.reduce(callback, acc, curr=0);
+        collection.reduce(callback, acc);
      },
 
 
