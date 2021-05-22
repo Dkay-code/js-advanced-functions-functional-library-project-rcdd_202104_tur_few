@@ -41,7 +41,7 @@ const fi = (function() {
          return Object.values(collection).length;
        }
      },
-     
+
      first: function (array, n = 1) {
        const newArr = array.slice(0, n);
        return newArr.length == 1 ? newArr[0] : newArr;
@@ -51,12 +51,14 @@ const fi = (function() {
        const newArr = array.slice(-n, array.length);
        return newArr.length == 1 ? newArr[0] : newArr;
      },
+
      compact: function (array) {
-       const newArr = [];
-       for (const element of array) {
-         if (element) {
-           newArr.push(element);
-         }
+       array.map(element)
+      //  const newArr = [];
+      //  for (const element of array) {
+      //    if (element) {
+      //      newArr.push(element);
+      //    }
        }
        return newArr;
      },
