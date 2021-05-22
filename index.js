@@ -38,7 +38,8 @@ const fi = (function() {
            return element;
          }
        }
-     },
+     }
+   },
      filter: function (collection, callback) {
        const filterd = [];
        for (const element of collection) {
