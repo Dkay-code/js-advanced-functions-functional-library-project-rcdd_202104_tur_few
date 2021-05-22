@@ -61,28 +61,14 @@ const fi = (function() {
        }
        return newArr;
      },
+     
      sortBy: function (array, callback) {
        const newArr = [...array];
        return newArr.sort(function (a, b) {
          return callback(a) - callback(b);
        });
      },
-     keys: function (obj) {
-       const keys = [];
-       for (const key in obj) {
-         keys.push(key);
-       }
-       return keys;
-     },
-
-
-     values: function (obj) {
-       const values = [];
-       for (const key in obj) {
-         values.push(obj[key]);
-       }
-       return values;
-     },
+     
 
      flatten: function (array, shallow, newArr = []) {
        if (shallow) {
